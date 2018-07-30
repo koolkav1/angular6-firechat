@@ -13,7 +13,7 @@ export class ChatWindowComponent implements OnInit {
       sender: {
         firstName: 'kav',
         lastName: 'Khalsa',
-        photoUrl: "http://placekitten.com/g/150/150"
+        photoUrl: "http://placekitten.com/g/50/50"
       }
     },
     {
@@ -22,7 +22,7 @@ export class ChatWindowComponent implements OnInit {
       sender: {
         firstName: 'Sam',
         lastName: 'Smith',
-        photoUrl: 'http://placekitten.com/g/150/150'
+        photoUrl: 'http://placekitten.com/g/50/50'
       }
     },
     {
@@ -32,7 +32,7 @@ export class ChatWindowComponent implements OnInit {
       sender: {
         firstName: 'Jonny',
         lastName: 'Walker',
-        photoUrl: 'http://placekitten.com/g/150/150'
+        photoUrl: 'http://placekitten.com/g/50/50'
       }
     },
     {
@@ -41,7 +41,7 @@ export class ChatWindowComponent implements OnInit {
       sender: {
         firstName: 'Luke',
         lastName: 'Robby',
-        photoUrl: 'http://placekitten.com/g/150/150'
+        photoUrl: 'http://placekitten.com/g/50/50'
       }
     },
     {
@@ -50,7 +50,7 @@ export class ChatWindowComponent implements OnInit {
       sender: {
         firstName: 'James',
         lastName: 'Alex',
-        photoUrl: 'http://placekitten.com/g/150/150'
+        photoUrl: 'http://placekitten.com/g/50/50'
       }
     }
   ];

@@ -1,0 +1,11 @@
+@import '../styles/variables';
+
+.alert-warpper{
+    position: relative;
+
+    alert {
+        position: absolute;
+        top: $navbar-height;
+        width: 100%;
+    }
+}
