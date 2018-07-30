@@ -46,7 +46,9 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.auth.login(email, password).subscribe(success => {
           if (success) {
             this.router.navigateByUrl(this.returnUrl);
-          } 
+          } else {
+            this.displayFailedLogin();
+          }
             this.loadingService.isLoading.next(false);
           
         })
@@ -54,15 +56,19 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     }
     else {
-      const failedLoginAlert = new Alert('Your email or password were invalid, try again', AlertType.Danger);
+     
 
       this.loadingService.isLoading.next(false);
-      this.alertService.alerts.next(failedLoginAlert);
+      this.displayFailedLogin();
 
 
     }
   }
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+  private displayFailedLogin():void {
+    const failedLoginAlert = new Alert('Your email or password were invalid, try again', AlertType.Danger);
+    this.alertService.alerts.next(failedLoginAlert);
   }
 }

@@ -19,6 +19,11 @@ import { LoadingModule } from 'ngx-loading';
 import { LoadingService } from './services/loading.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { environment } from '../environments/environment';
+import {AngularFireModule} from 'angularfire2';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {AngularFireStorageModule} from 'angularfire2/storage';
+import {AngularFireAuthModule} from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,11 @@ import { AuthGuard } from './guards/auth.guard';
     BsDropdownModule.forRoot(),
     AlertModule.forRoot(),
     LoadingModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule
   ],
   providers: [AlertService, LoadingService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
