@@ -1,62 +1,61 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewChecked, ElementRef, ViewChild } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { ChatroomService } from '../../../../services/chatroom.service';
+import { LoadingService } from '../../../../services/loading.service';
 
 @Component({
   selector: 'app-chat-window',
   templateUrl: './chat-window.component.html',
   styleUrls: ['./chat-window.component.scss']
 })
-export class ChatWindowComponent implements OnInit {
-  public dummyData = [
-    {
-      message:'Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro.',
-      createdAt: new Date(),
-      sender: {
-        firstName: 'kav',
-        lastName: 'Khalsa',
-        photoUrl: "http://placekitten.com/g/50/50"
-      }
-    },
-    {
-      message:'De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia?',
-      createdAt: new Date(),
-      sender: {
-        firstName: 'Sam',
-        lastName: 'Smith',
-        photoUrl: 'http://placekitten.com/g/50/50'
-      }
-    },
-    {
-      message:`Cum horribilem walking dead resurgere de crazed sepulcris creaturis,
-       zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. `,
-      createdAt: new Date(),
-      sender: {
-        firstName: 'Jonny',
-        lastName: 'Walker',
-        photoUrl: 'http://placekitten.com/g/50/50'
-      }
-    },
-    {
-      message:' Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium.',
-      createdAt: new Date(),
-      sender: {
-        firstName: 'Luke',
-        lastName: 'Robby',
-        photoUrl: 'http://placekitten.com/g/50/50'
-      }
-    },
-    {
-      message:'Qui animated corpse, cricket bat max brucks terribilem incessu zomby.',
-      createdAt: new Date(),
-      sender: {
-        firstName: 'James',
-        lastName: 'Alex',
-        photoUrl: 'http://placekitten.com/g/50/50'
-      }
-    }
-  ];
-  constructor() { }
+export class ChatWindowComponent implements OnInit, OnDestroy, AfterViewChecked {
+  @ViewChild('scrollContainer') private scrollContainer: ElementRef;
+
+  private subscriptions: Subscription[] = [];
+  public chatroom: Observable<any>;
+  public messages: Observable<any>;
+ 
+  constructor(
+    private route: ActivatedRoute,
+    private chatroomService: ChatroomService,
+    private loadingservice: LoadingService
+  ) {
+    this.subscriptions.push(
+      this.chatroomService.selectedChatroom.subscribe(chatroom => {
+        this.chatroom = chatroom;
+        // this.loadingservice.isLoading.next(false);
+      })
+    );
+    this.subscriptions.push(
+      this.chatroomService.selectedChatroomMessages.subscribe(messages => {
+        this.messages = messages;
+        // this.loadingservice.isLoading.next(false);
+      })
+    );
+
+   }
 
   ngOnInit() {
+    this.scrollToBotton();
+
+    this.subscriptions.push(
+      this.route.paramMap.subscribe(params => {
+        const chatroomId = params.get('chatroomId');
+        this.chatroomService.changedChatroom.next(chatroomId);
+      })
+    );
+  }
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+  ngAfterViewChecked():void{
+   this.scrollToBotton();
+  }
+  private scrollToBotton():void {
+    try {
+      this.scrollContainer.nativeElement.scrollTop = this.scrollContainer.nativeElement.scrollHeight;
+    }catch(err){}
   }
 
 }

@@ -14,6 +14,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class AuthService {
   public currentUser:Observable<User | null>;
+  public currentUserSnapshot: User | null;
 
   constructor(
     private router: Router,
@@ -33,6 +34,7 @@ export class AuthService {
           }
         )
       );
+      this.setCurrentUserSnapshot();
    }
    public signup(firstName: string, lastName: string, email: string, password: string): Observable<boolean>{
     return from(
@@ -65,5 +67,10 @@ export class AuthService {
     this.alertService.alerts.next( new Alert('You have been successfully signed out', AlertType.Success));
      });
     
+   }
+   private setCurrentUserSnapshot():void {
+    this.currentUser.subscribe(user => {
+      this.currentUserSnapshot = user;
+    });
    }
 }

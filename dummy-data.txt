@@ -1,0 +1,48 @@
+ public dummyData = [
+    {
+      message:'Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro.',
+      createdAt: new Date(),
+      sender: {
+        firstName: 'kav',
+        lastName: 'Khalsa',
+        photoUrl: "http://placekitten.com/g/50/50"
+      }
+    },
+    {
+      message:'De carne lumbering animata corpora quaeritis. Summus brains sit??, morbo vel maleficia?',
+      createdAt: new Date(),
+      sender: {
+        firstName: 'Sam',
+        lastName: 'Smith',
+        photoUrl: 'http://placekitten.com/g/50/50'
+      }
+    },
+    {
+      message:`Cum horribilem walking dead resurgere de crazed sepulcris creaturis,
+       zombie sicut de grave feeding iride et serpens. Pestilentia, shaun ofthe dead scythe animated corpses ipsa screams. Pestilentia est plague haec decaying ambulabat mortuos. `,
+      createdAt: new Date(),
+      sender: {
+        firstName: 'Jonny',
+        lastName: 'Walker',
+        photoUrl: 'http://placekitten.com/g/50/50'
+      }
+    },
+    {
+      message:' Hi mindless mortuis soulless creaturas, imo evil stalking monstra adventus resi dentevil vultus comedat cerebella viventium.',
+      createdAt: new Date(),
+      sender: {
+        firstName: 'Luke',
+        lastName: 'Robby',
+        photoUrl: 'http://placekitten.com/g/50/50'
+      }
+    },
+    {
+      message:'Qui animated corpse, cricket bat max brucks terribilem incessu zomby.',
+      createdAt: new Date(),
+      sender: {
+        firstName: 'James',
+        lastName: 'Alex',
+        photoUrl: 'http://placekitten.com/g/50/50'
+      }
+    }
+  ];
