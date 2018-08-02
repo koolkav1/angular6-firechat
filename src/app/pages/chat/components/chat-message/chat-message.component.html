@@ -1,5 +1,5 @@
 <div class="chat-message d-flex">
-  <div class="image-wrapper">
+  <div class="image-wrapper" [routerLink]="'/profile/' + message.sender.id">
       <img [src]="chatPhoto| async" class="rounded-circle">
   </div>
 

@@ -27,6 +27,7 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 import { ChatroomService } from './services/chatroom.service';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { IsOwnerGuard } from './guards/is-owner.guard';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { EditProfileComponent } from './pages/edit-profile/edit-profile.componen
     AngularFireStorageModule,
     AngularFireAuthModule
   ],
-  providers: [AlertService, LoadingService, AuthService, AuthGuard, ChatroomService],
+  providers: [AlertService, LoadingService, AuthService, AuthGuard, ChatroomService, IsOwnerGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
