@@ -1,0 +1,53 @@
+<form (ngSubmit)="onSubmit()"  #f="ngForm">
+    <div
+    id="user-data"
+    ngModelGroup="userData"
+    #userData="ngModelGroup">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-8 col-md-6" *ngIf="currentUser else noPhoto">
+      <img *ngIf="!downloadURL" [src]="currentUser.photoUrl" alt="profile-pic" class="rounded-circle mx-auto d-block profile-pic">
+    <img *ngIf="downloadURL" [src]="downloadURL | async" alt="profile-pic" class="rounded-circle mx-auto d-block profile-pic">
+      <!-- <img [src]="downloadURL && downloadURL > 0  ? (downloadURL | async) : currentUser.photoUrl" alt="profile-pic" class="rounded-circle mx-auto d-block profile-pic"> -->
+
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="currentUser">
+    <div class="col-xs-12 col-sm-8 col-md-6">
+      <input type="file" name="uploadFile"  (change)="uploadFile($event)">
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="currentUser">
+    <div class="col-xs-12 col-sm-8 col-md-6 justify-content-center d-flex">
+      <input type="text" name="firstName" [(ngModel)]="currentUser.firstName">
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="currentUser">
+    <div class="col-xs-12 col-sm-8 col-md-6 justify-content-center d-flex">
+        <input type="text" name="lastName"   [(ngModel)]="currentUser.lastName">
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="currentUser">
+    <div class="col-xs-12 col-sm-8 col-md-6 quote">
+        <input type="text" name="quote" [(ngModel)]="currentUser.quote">
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="currentUser">
+      <div class="col-xs-12 col-sm-8 col-md-6 text-center d-flex bio">
+         <textarea  rows="5" name="bio" [(ngModel)]="currentUser.bio"></textarea>
+      </div>
+    </div>
+    <div class="row justify-content-center" *ngIf="currentUser">
+        <div class="col-xs-12 col-sm-8 col-md-6 justify-content-center d-flex ">
+          <button class="btn btn-primary" type="submit">Save Profile</button>
+        </div>
+      </div>
+ 
+</div>
+</div>
+</form>
+<ng-template #noPhoto>
+  <div class="no-photo d-flex justify-content-center align-items-center">
+    No Photo
+  </div>
+</ng-template>

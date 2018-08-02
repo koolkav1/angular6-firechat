@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { from } from 'rxjs';
 import { Observable, of } from 'rxjs';
-import { User } from '../models/user';
+import { User } from '../interfaces/user';
 import { Router } from '@angular/router';
 import { AlertService } from './alert.service';
 import { Alert } from '../classes/alert';
@@ -46,7 +46,9 @@ export class AuthService {
           email: user.user.email,
           firstName,
           lastName,
-          photoUrl: 'https://firebasestorage.googleapis.com/v0/b/udemy-chat-app.appspot.com/o/default_profile_pic.jpg?alt=media&token=83090f3b-099a-484b-bfc4-e0c3c6e7ea0c'
+          photoUrl: 'https://firebasestorage.googleapis.com/v0/b/udemy-chat-app.appspot.com/o/default_profile_pic.jpg?alt=media&token=83090f3b-099a-484b-bfc4-e0c3c6e7ea0c',
+          quote: 'List is like a box of chocolates, you never know what you are going to get!',
+          bio: 'Bio is under construction...'
         };
         userRef.set(updatedUser);
         return true;
