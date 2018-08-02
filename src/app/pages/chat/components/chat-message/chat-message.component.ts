@@ -11,10 +11,11 @@ import { AngularFireStorage } from 'angularfire2/storage';
 export class ChatMessageComponent implements OnInit {
   @Input() message: Message;
   @Input() photoURL: any;
+
   public chatPhoto: Observable<string | null>;
 
   constructor(private fs: AngularFireStorage) {
- 
+   this.message.createdAt.getDate();
   }
 
   ngOnInit() {

@@ -14,7 +14,8 @@ export class ChatWindowComponent implements OnInit, OnDestroy, AfterViewChecked 
 
   private subscriptions: Subscription[] = [];
   public chatroom: Observable<any>;
-  public messages: Observable<any>;
+  public messages: Observable<any>[] = [];
+  public messagesLength;
  
   constructor(
     private route: ActivatedRoute,
@@ -34,7 +35,7 @@ export class ChatWindowComponent implements OnInit, OnDestroy, AfterViewChecked 
         
       })
     );
-
+ 
    }
 
   ngOnInit() {

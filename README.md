@@ -6,10 +6,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Section 6
-I could not get the code working exactly according to the tutorial so I have made a workaround.
-There are some errors, feel feel to fix them.
-Code is upto Lecture 33.
+## Section 7
+Code is complete with a major bug for the messages length property. The photo does not automatically load on the edit profile page without clicking the upload button. This needs to be fixed and then I would have a fully working application.
 
 ## Create a Environments folder in src/environments
 include an evironments.ts file with the following code and insert your own Firebase project details:

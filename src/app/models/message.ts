@@ -1,4 +1,4 @@
-import { User } from './user';
+import { User } from '../interfaces/user';
 export class Message {
     message: string;
     createdAt: Date;
@@ -6,6 +6,6 @@ export class Message {
     constructor({message, createAt, sender}){
         this.message = message;
         this.createdAt = createAt;
-        this.sender = new User(sender);
+        this.sender = sender;
     }
 }
