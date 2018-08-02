@@ -1,6 +1,6 @@
 <div class="chat-message d-flex">
   <div class="image-wrapper">
-      <img src="{{message.sender.photoUrl}}" class="rounded-circle">
+      <img [src]="chatPhoto| async" class="rounded-circle">
   </div>
 
   <div class="bubble d-flex flex-column">

@@ -31,6 +31,7 @@ export class ChatWindowComponent implements OnInit, OnDestroy, AfterViewChecked 
       this.chatroomService.selectedChatroomMessages.subscribe(messages => {
         this.messages = messages;
         // this.loadingservice.isLoading.next(false);
+        
       })
     );
 

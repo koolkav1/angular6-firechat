@@ -46,7 +46,7 @@ export class AuthService {
           email: user.user.email,
           firstName,
           lastName,
-          photoUrl: 'https://firebasestorage.googleapis.com/v0/b/udemy-chat-app.appspot.com/o/default_profile_pic.jpg?alt=media&token=83090f3b-099a-484b-bfc4-e0c3c6e7ea0c',
+          photoUrl: 'great_hair.jpg_NRj0vUpj1ahCnXtUWOsuvzBQIg62',
           quote: 'List is like a box of chocolates, you never know what you are going to get!',
           bio: 'Bio is under construction...'
         };
