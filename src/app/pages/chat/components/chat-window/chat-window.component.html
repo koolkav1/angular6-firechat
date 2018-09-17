@@ -11,10 +11,10 @@
 </div>
 <ng-template #chatMessages>
     <app-chatroom-title-bar [title]="chatroom.name"></app-chatroom-title-bar>
-  <div class="message-wrapper h-100" #scrollContainer>
-    <ng-container *ngIf="messages.length > 0 else noMessages">
+  <div class="message-wrapper h-100" #scrollContainer>    
         <ng-container *ngFor="let message of messages">
-            <app-chat-message  [message]="message" [photoURL]="message.sender.photoUrl"></app-chat-message>
+            <ng-container *ngIf="messages.length > 0 else noMessages">
+            <app-chat-message   [message]="message" [photoURL]="message.sender.photoUrl"></app-chat-message>
           </ng-container>
     </ng-container>
     

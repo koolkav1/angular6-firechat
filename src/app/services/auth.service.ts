@@ -15,6 +15,8 @@ import { switchMap } from 'rxjs/operators';
 export class AuthService {
   public currentUser:Observable<User | null>;
   public currentUserSnapshot: User | null;
+  public statusUser: any;
+  public listOfUsers: Observable<User[]>;
 
   constructor(
     private router: Router,
@@ -48,7 +50,8 @@ export class AuthService {
           lastName,
           photoUrl: 'great_hair.jpg_NRj0vUpj1ahCnXtUWOsuvzBQIg62',
           quote: 'List is like a box of chocolates, you never know what you are going to get!',
-          bio: 'Bio is under construction...'
+          bio: 'Bio is under construction...',
+          status: 'online'
         };
         userRef.set(updatedUser);
         return true;
@@ -59,12 +62,28 @@ export class AuthService {
    public login (email: string, password: string) : Observable<boolean> {
      return from(
        this.afAuth.auth.signInWithEmailAndPassword(email, password)
-       .then((user)=> true)
-       .catch((err)=> false)
+       .then((user)=> {
+         this.statusUser = user;
+        const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${user.user.uid}`);
+        const status = { status:'online' } ;
+        userRef.update(status);
+         
+         return true;
+        })
+       .catch((err)=> {console.log(err); return false;})
      );
    }
    public logout(): void {
-     this.afAuth.auth.signOut().then(()=> {
+    const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${this.statusUser.user.uid}`);
+    
+    const status = { status:'offline' } ;
+    userRef.update(status).then((succes) => {
+      console.log(succes);
+    })
+    .catch((err)=> {
+      console.log(err);
+    });
+         this.afAuth.auth.signOut().then(()=> {
       this.router.navigate(['/login']);
     this.alertService.alerts.next( new Alert('You have been successfully signed out', AlertType.Success));
      });
@@ -75,4 +94,16 @@ export class AuthService {
       this.currentUserSnapshot = user;
     });
    }
-}
+ 
+  public getAllUsers() {
+    return this.db.collection('users').valueChanges();
+  }
+  public getAllUsersExceptCurrent(){
+    this.listOfUsers = this.db.collection('users').valueChanges();    
+    
+      
+    }
+          
+    
+  }
+

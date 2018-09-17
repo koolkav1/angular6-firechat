@@ -38,10 +38,13 @@ export class EditProfileComponent implements OnInit, OnDestroy {
     private alertService: AlertService
   ) {
     this.loadingService.isLoading.next(true);
+  
+ 
     this.subscriptions.push(
       this.auth.currentUser.subscribe(user => {
         const ref = this.fs.ref(`${user.photoUrl}`);
         this.profileUrl = ref.getDownloadURL();
+        
       })
     );
     
@@ -60,6 +63,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
         this.userId = params.get('userId');
       })
     );
+   
   }
   public uploadFile(event): void {
     const file = event.target.files[0];

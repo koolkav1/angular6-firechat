@@ -4,4 +4,15 @@
       <a [routerLink]="['/chat', chatroom.id]">{{chatroom.name}}</a>
     </div>
   </ng-container>
+  <form (ngSubmit)="onSubmit(h)" #h="ngForm">
+    <div class="input-group">
+      <input type="text" name="channelName" class="form-control" placeholder="Create a new channel" ngModel>
+    </div>
+    <button class="btn btn-primary" type="submit">Create</button>
+  </form>
+  <ng-container *ngFor="let user of userArray ">
+     <div *ngIf="user.id != currentUser.id">
+      <h4  (click)="chat(user)" >{{ user.firstName }} - {{ user.lastName }}</h4>
+     </div>  
+      </ng-container>
 </div>

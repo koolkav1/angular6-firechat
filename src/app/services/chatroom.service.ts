@@ -43,6 +43,15 @@ export class ChatroomService {
         ));
     this.chatrooms = this.db.collection('chat-rooms').valueChanges();
    }
+   public createChatroom(room: string) {
+     const chatroomId = this.db.createId();
+     const newChatroom = {
+       id: chatroomId,
+       name: room
+     }
+     this.db.collection(`chat-rooms`).doc(`${chatroomId}`).set(newChatroom);
+     
+   }
    public createMessage(text: string):void {
     const chatroomId = this.changedChatroom.value;
     const message = {

@@ -7,6 +7,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { IsOwnerGuard } from './guards/is-owner.guard';
+import { DirectComponent } from './pages/direct/direct.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login'},
@@ -17,9 +18,12 @@ const routes: Routes = [
     { path: '', component: ChatComponent},
     { path: ':chatroomId', component:ChatComponent}
   ]},
+  { path: 'direct-chat', children: [
+    { path: '', component: DirectComponent },
+    { path: ':privateRoomID', component: DirectComponent }
+  ]},
   { path: 'profile/:userId', component: ProfileComponent, canActivate: [AuthGuard]},
   { path: 'profile/:userId/edit', component: EditProfileComponent, canActivate: [AuthGuard, IsOwnerGuard]},
-  { path: '**', redirectTo: '/login'}
 ];
 
 @NgModule({

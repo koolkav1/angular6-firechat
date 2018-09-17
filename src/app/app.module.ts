@@ -28,6 +28,13 @@ import { ChatroomService } from './services/chatroom.service';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { IsOwnerGuard } from './guards/is-owner.guard';
+import { FirestoreDatePipe } from './pipes/firestoredate.pipe';
+
+import { DirectComponent } from './pages/direct/direct.component';
+import { DirectChatWindowComponent } from './pages/direct/direct-chat-window/direct-chat-window.component';
+import { DirectChatroomTitleBarComponent } from './pages/direct/direct-chatroom-title-bar/direct-chatroom-title-bar.component';
+import { DirectChatInputComponent } from './pages/direct/direct-chat-input/direct-chat-input.component';
+import { DirectChatMessageComponent } from './pages/direct/direct-chat-message/direct-chat-message.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +49,18 @@ import { IsOwnerGuard } from './guards/is-owner.guard';
     ChatMessageComponent,
     ChatWindowComponent,
     ProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    FirestoreDatePipe,
+   
+    DirectComponent,
+   
+    DirectChatWindowComponent,
+   
+    DirectChatroomTitleBarComponent,
+   
+    DirectChatInputComponent,
+   
+    DirectChatMessageComponent
   ],
   imports: [
     BrowserModule,
