@@ -9,6 +9,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ## Section 7
 Code is complete with a major bug for the messages length property. The photo does not automatically load on the edit profile page without clicking the upload button. This needs to be fixed and then I would have a fully working application.
 
+## Updated
+now with peer to peer direct messaging.
+
 ## Create a Environments folder in src/environments
 include an evironments.ts file with the following code and insert your own Firebase project details:
 `export const environment = {
